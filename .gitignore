@@ -1,0 +1,9 @@
+*.env
+*.sql
+
+dump.rdb
+.DS_Store
+.idea/
+.vscode/
+data/
+ssl/

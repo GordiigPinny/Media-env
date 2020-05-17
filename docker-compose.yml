@@ -1,0 +1,31 @@
+version: "2.1"
+
+services:
+  nginx:
+    container_name: nginx_media
+    image: nginx:1.14.0-alpine
+    depends_on:
+      - web
+    networks:
+      - back_network
+    ports:
+      - "80:80"
+
+  web:
+    container_name: app_media
+    image: tech_rost_python:latest
+    depends_on:
+      - redis
+    networks:
+      - back_network
+    env_file:
+      - .env
+
+  redis:
+    container_name: redis_media
+    image: redis:4.0.10-alpine3.8
+    networks:
+      - back_network
+
+networks:
+  back_network:
